@@ -1,0 +1,124 @@
+
+entity Member {
+	numberMember String required unique
+    typeMember MemberType required
+  	cinMember String required
+	firstnameMember String
+    lastnameMember String
+    emailMember String required unique pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) 
+    numberPhoneMember String 
+    dobMember LocalDate required
+    adressMember String
+    imageMember ImageBlob
+	descMember String 
+}
+
+entity Association {
+	numberAssociation String required unique
+    nameAssociation String required
+    imageAssociation ImageBlob
+    descAssociation String
+}
+
+entity Membership {
+	numberMembership String required unique
+    amountMembership BigDecimal
+    startDateMembership LocalDate required,
+    endDateMembership LocalDate required
+    validMembership Boolean required
+    descMembership String
+}
+
+entity Guarding {
+	numberGuarding String required unique
+    titleGuarding String
+    descGuarding String
+}
+
+entity Vehicle {
+	numberVehicle String required unique
+    titleVehicle String
+    descVehicle String
+}
+
+entity CongePolice {
+	numberCongePolice String required unique
+    endDateCongePolice LocalDate required
+    validCongePolice Boolean required
+    descCongePolice String
+}
+
+entity Insurance {
+	numberInsurance String required unique
+    endDateInsurance LocalDate required
+    validInsurance Boolean required
+    descInsurance String
+}
+
+entity Dealership {
+	numberDealership String required unique
+    endDateDealership LocalDate required
+    validDealership Boolean required
+    descDealership String
+}
+
+entity MedicalCertificate {
+	numberMedicalCertificate String required unique
+    endDateMedicalCertificate LocalDate required
+    validMedicalCertificate Boolean required
+    descMedicalCertificate String
+}
+
+entity Doc {
+	numberDoc String required unique
+    titleDoc String required
+    sizeDoc Long required
+    mimeTypeDoc String
+	descDoc String
+}
+
+entity TypeDoc {
+	numberTypeDoc String required unique
+    titleTypeDoc String required
+    descTypeDoc String
+}
+
+entity ContentDoc {
+	numberContentDoc String required unique
+    dataContentDoc Blob required
+}
+
+
+
+enum MemberType {
+	MEMBER_INDIVIDUAL(member_individual),
+    MEMBER_VEHICLEOWNER(member_vehicleowner),
+    MEMBER_GUEST(member_guest)
+}
+
+relationship OneToMany {
+  Member{membership} to Membership{member}
+  Association{member required} to Member{association}
+  Membership{guarding} to Guarding{membership}
+  Membership{doc} to Doc{membership}
+  Membership{medicalCertificate} to MedicalCertificate{membership}
+  Membership{dealership} to Dealership{membership}
+  Membership{vehicle} to Vehicle{membership}
+  Vehicle{congePolice} to CongePolice{vehicle}
+  Vehicle{insurance} to Insurance{vehicle}
+}
+relationship OneToOne {
+   Member{parent} to Member{child}
+   Doc{contentDoc required} to ContentDoc{doc}
+   Doc{typeDoc required} to TypeDoc{doc}
+   Insurance{doc} to Doc{insurance}
+   CongePolice{doc} to Doc{congePolice}
+   MedicalCertificate{doc} to Doc{medicalCertificate}
+   Dealership{doc} to Doc{dealership}
+}
+
+
+dto * with mapstruct
+paginate all with pagination
+service all with serviceImpl
+
