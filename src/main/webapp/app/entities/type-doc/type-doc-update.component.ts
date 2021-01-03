@@ -27,8 +27,8 @@ export class TypeDocUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ typeDoc }) => {
       this.updateForm(typeDoc);
-      if (JSON.stringify(typeDoc) === '{}') {
-        const generateUniqueNumber = 'M_' + Date.now();
+      if (!typeDoc.numberTypeDoc) {
+        const generateUniqueNumber = 'TD_' + Date.now();
         this.editForm.patchValue({
           numberTypeDoc: generateUniqueNumber,
         });

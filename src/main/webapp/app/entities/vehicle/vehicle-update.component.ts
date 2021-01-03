@@ -36,8 +36,8 @@ export class VehicleUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ vehicle }) => {
       this.updateForm(vehicle);
-      if (JSON.stringify(vehicle) === '{}') {
-        const generateUniqueNumber = 'M_' + Date.now();
+      if (!vehicle.numberVehicle) {
+        const generateUniqueNumber = 'V_' + Date.now();
         this.editForm.patchValue({
           numberVehicle: generateUniqueNumber,
         });

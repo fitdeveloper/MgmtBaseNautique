@@ -41,8 +41,8 @@ export class MembershipUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ membership }) => {
       this.updateForm(membership);
-      if (JSON.stringify(membership) === '{}') {
-        const generateUniqueNumber = 'M_' + Date.now();
+      if (!membership.numberMembership) {
+        const generateUniqueNumber = 'MS_' + Date.now();
         this.editForm.patchValue({
           numberMembership: generateUniqueNumber,
         });

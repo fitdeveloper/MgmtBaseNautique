@@ -46,8 +46,8 @@ export class MedicalCertificateUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ medicalCertificate }) => {
       this.updateForm(medicalCertificate);
-      if (JSON.stringify(medicalCertificate) === '{}') {
-        const generateUniqueNumber = 'CP_' + Date.now();
+      if (!medicalCertificate.numberMedicalCertificate) {
+        const generateUniqueNumber = 'MC_' + Date.now();
         this.editForm.patchValue({
           numberMedicalCertificate: generateUniqueNumber,
         });

@@ -46,7 +46,7 @@ export class CongePoliceUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ congePolice }) => {
       this.updateForm(congePolice);
-      if (JSON.stringify(congePolice) === '{}') {
+      if (!congePolice.numberCongePolice) {
         const generateUniqueNumber = 'CP_' + Date.now();
         this.editForm.patchValue({
           numberCongePolice: generateUniqueNumber,
