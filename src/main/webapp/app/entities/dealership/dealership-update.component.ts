@@ -47,7 +47,7 @@ export class DealershipUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ dealership }) => {
       this.updateForm(dealership);
       if (!dealership.numberDealership) {
-        const generateUniqueNumber = 'D_' + Date.now();
+        const generateUniqueNumber = 'DS_' + Date.now();
         this.editForm.patchValue({
           numberDealership: generateUniqueNumber,
         });
