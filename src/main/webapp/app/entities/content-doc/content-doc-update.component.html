@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-content-doc-heading" jhiTranslate="mgmtBaseNautiqueApp.contentDoc.home.createOrEditLabel">Create or edit a Content Doc</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.contentDoc.numberContentDoc" for="field_numberContentDoc">Number Content Doc</label>
+                    <input type="text" class="form-control" name="numberContentDoc" id="field_numberContentDoc"
+                           formControlName="numberContentDoc"/>
+                    <div *ngIf="editForm.get('numberContentDoc')!.invalid && (editForm.get('numberContentDoc')!.dirty || editForm.get('numberContentDoc')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberContentDoc')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.contentDoc.dataContentDoc" for="field_dataContentDoc">Data Content Doc</label>
+                    <div>
+                        <div *ngIf="editForm.get('dataContentDoc')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('dataContentDocContentType')!.value, editForm.get('dataContentDoc')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('dataContentDocContentType')!.value }}, {{ byteSize(editForm.get('dataContentDoc')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({dataContentDoc: null});editForm.patchValue({dataContentDocContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_dataContentDoc" (change)="setFileData($event, 'dataContentDoc', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="dataContentDoc" id="field_dataContentDoc"
+                           formControlName="dataContentDoc"/>
+                    <input type="hidden" class="form-control" name="dataContentDocContentType" id="field_dataContentDocContentType"
+                           formControlName="dataContentDocContentType" />
+                    <div *ngIf="editForm.get('dataContentDoc')!.invalid && (editForm.get('dataContentDoc')!.dirty || editForm.get('dataContentDoc')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataContentDoc')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

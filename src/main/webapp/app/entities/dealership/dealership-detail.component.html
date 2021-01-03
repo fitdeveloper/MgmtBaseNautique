@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dealership">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.dealership.detail.title">Dealership</span> {{ dealership.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.numberDealership">Number Dealership</span></dt>
+                <dd>
+                    <span>{{ dealership.numberDealership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.endDateDealership">End Date Dealership</span></dt>
+                <dd>
+                    <span>{{ dealership.endDateDealership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.validDealership">Valid Dealership</span></dt>
+                <dd>
+                    <span>{{ dealership.validDealership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.descDealership">Desc Dealership</span></dt>
+                <dd>
+                    <span>{{ dealership.descDealership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.doc">Doc</span></dt>
+                <dd>
+                    <div *ngIf="dealership.docId">
+                        <a [routerLink]="['/doc', dealership.docId, 'view']">{{ dealership.docId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.dealership.membership">Membership</span></dt>
+                <dd>
+                    <div *ngIf="dealership.membershipId">
+                        <a [routerLink]="['/membership', dealership.membershipId, 'view']">{{ dealership.membershipId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dealership', dealership.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

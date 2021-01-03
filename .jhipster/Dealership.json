@@ -1,0 +1,52 @@
+{
+  "name": "Dealership",
+  "fields": [
+    {
+      "fieldName": "numberDealership",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "endDateDealership",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "validDealership",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descDealership",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "dealership",
+      "relationshipName": "doc",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "dealership",
+      "relationshipName": "membership",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103090308",
+  "entityTableName": "dealership",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

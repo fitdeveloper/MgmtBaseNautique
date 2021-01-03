@@ -14,7 +14,28 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085608_added_entity_Member.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085708_added_entity_Association.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085808_added_entity_Membership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085908_added_entity_Guarding.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090008_added_entity_Vehicle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090108_added_entity_CongePolice.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090208_added_entity_Insurance.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090308_added_entity_Dealership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090408_added_entity_MedicalCertificate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090508_added_entity_Doc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090608_added_entity_TypeDoc.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090708_added_entity_ContentDoc.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210103085608_added_entity_constraints_Member.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085808_added_entity_constraints_Membership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103085908_added_entity_constraints_Guarding.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090008_added_entity_constraints_Vehicle.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090108_added_entity_constraints_CongePolice.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090208_added_entity_constraints_Insurance.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090308_added_entity_constraints_Dealership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090408_added_entity_constraints_MedicalCertificate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210103090508_added_entity_constraints_Doc.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contentDoc">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.contentDoc.detail.title">Content Doc</span> {{ contentDoc.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.contentDoc.numberContentDoc">Number Content Doc</span></dt>
+                <dd>
+                    <span>{{ contentDoc.numberContentDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.contentDoc.dataContentDoc">Data Content Doc</span></dt>
+                <dd>
+                    <div *ngIf="contentDoc.dataContentDoc">
+                        <a (click)="openFile(contentDoc.dataContentDocContentType, contentDoc.dataContentDoc)" jhiTranslate="entity.action.open">open</a>
+                        {{ contentDoc.dataContentDocContentType }}, {{ byteSize(contentDoc.dataContentDoc) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/content-doc', contentDoc.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

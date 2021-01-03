@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="typeDoc">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.typeDoc.detail.title">Type Doc</span> {{ typeDoc.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.typeDoc.numberTypeDoc">Number Type Doc</span></dt>
+                <dd>
+                    <span>{{ typeDoc.numberTypeDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.typeDoc.titleTypeDoc">Title Type Doc</span></dt>
+                <dd>
+                    <span>{{ typeDoc.titleTypeDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.typeDoc.descTypeDoc">Desc Type Doc</span></dt>
+                <dd>
+                    <span>{{ typeDoc.descTypeDoc }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/type-doc', typeDoc.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

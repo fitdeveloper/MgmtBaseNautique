@@ -1,0 +1,83 @@
+{
+  "name": "Membership",
+  "fields": [
+    {
+      "fieldName": "numberMembership",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "amountMembership",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "startDateMembership",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDateMembership",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "validMembership",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descMembership",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "guarding",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "guarding"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "doc"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "medicalCertificate",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "medicalCertificate"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dealership",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "dealership"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicle",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "vehicle"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "membership",
+      "relationshipName": "member",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103085808",
+  "entityTableName": "membership",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

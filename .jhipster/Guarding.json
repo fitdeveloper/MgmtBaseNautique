@@ -1,0 +1,38 @@
+{
+  "name": "Guarding",
+  "fields": [
+    {
+      "fieldName": "numberGuarding",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "titleGuarding",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descGuarding",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "guarding",
+      "relationshipName": "membership",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103085908",
+  "entityTableName": "guarding",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

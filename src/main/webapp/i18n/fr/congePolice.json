@@ -1,0 +1,28 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "congePolice": {
+      "home": {
+        "title": "CongePolices",
+        "createLabel": "Créer un nouveau Conge Police",
+        "createOrEditLabel": "Créer ou éditer un Conge Police",
+        "search": "Recherche pour Conge Police",
+        "notFound": "Aucun Conge Police trouvé"
+      },
+      "created": "Un nouveau Conge Police a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Conge Police avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Conge Police avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Conge Police {{ id }} ?"
+      },
+      "detail": {
+        "title": "Conge Police"
+      },
+      "numberCongePolice": "Number Conge Police",
+      "endDateCongePolice": "End Date Conge Police",
+      "validCongePolice": "Valid Conge Police",
+      "descCongePolice": "Desc Conge Police",
+      "doc": "Doc",
+      "vehicle": "Vehicle"
+    }
+  }
+}

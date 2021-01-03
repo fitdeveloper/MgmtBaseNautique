@@ -1,0 +1,28 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "medicalCertificate": {
+      "home": {
+        "title": "Medical Certificates",
+        "createLabel": "Create a new Medical Certificate",
+        "createOrEditLabel": "Create or edit a Medical Certificate",
+        "search": "Search for Medical Certificate",
+        "notFound": "No Medical Certificates found"
+      },
+      "created": "A new Medical Certificate is created with identifier {{ param }}",
+      "updated": "A Medical Certificate is updated with identifier {{ param }}",
+      "deleted": "A Medical Certificate is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Medical Certificate {{ id }}?"
+      },
+      "detail": {
+        "title": "Medical Certificate"
+      },
+      "numberMedicalCertificate": "Number Medical Certificate",
+      "endDateMedicalCertificate": "End Date Medical Certificate",
+      "validMedicalCertificate": "Valid Medical Certificate",
+      "descMedicalCertificate": "Desc Medical Certificate",
+      "doc": "Doc",
+      "membership": "Membership"
+    }
+  }
+}

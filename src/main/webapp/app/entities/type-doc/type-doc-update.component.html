@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-type-doc-heading" jhiTranslate="mgmtBaseNautiqueApp.typeDoc.home.createOrEditLabel">Create or edit a Type Doc</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.typeDoc.numberTypeDoc" for="field_numberTypeDoc">Number Type Doc</label>
+                    <input type="text" class="form-control" name="numberTypeDoc" id="field_numberTypeDoc"
+                           formControlName="numberTypeDoc"/>
+                    <div *ngIf="editForm.get('numberTypeDoc')!.invalid && (editForm.get('numberTypeDoc')!.dirty || editForm.get('numberTypeDoc')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberTypeDoc')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.typeDoc.titleTypeDoc" for="field_titleTypeDoc">Title Type Doc</label>
+                    <input type="text" class="form-control" name="titleTypeDoc" id="field_titleTypeDoc"
+                           formControlName="titleTypeDoc"/>
+                    <div *ngIf="editForm.get('titleTypeDoc')!.invalid && (editForm.get('titleTypeDoc')!.dirty || editForm.get('titleTypeDoc')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('titleTypeDoc')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.typeDoc.descTypeDoc" for="field_descTypeDoc">Desc Type Doc</label>
+                    <input type="text" class="form-control" name="descTypeDoc" id="field_descTypeDoc"
+                           formControlName="descTypeDoc"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

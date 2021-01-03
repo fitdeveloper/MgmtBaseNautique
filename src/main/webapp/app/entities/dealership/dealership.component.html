@@ -1,0 +1,107 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mgmtBaseNautiqueApp.dealership.home.title">Dealerships</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dealership" [routerLink]="['/dealership/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="mgmtBaseNautiqueApp.dealership.home.createLabel">
+            Create a new Dealership
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'mgmtBaseNautiqueApp.dealership.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dealerships?.length === 0">
+        <span jhiTranslate="mgmtBaseNautiqueApp.dealership.home.notFound">No dealerships found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dealerships && dealerships.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberDealership"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.numberDealership">Number Dealership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endDateDealership"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.endDateDealership">End Date Dealership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="validDealership"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.validDealership">Valid Dealership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="descDealership"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.descDealership">Desc Dealership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="docId"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.doc">Doc</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="membershipId"><span jhiTranslate="mgmtBaseNautiqueApp.dealership.membership">Membership</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dealership of dealerships ;trackBy: trackId">
+                    <td><a [routerLink]="['/dealership', dealership.id, 'view']">{{ dealership.id }}</a></td>
+                    <td>{{ dealership.numberDealership }}</td>
+                    <td>{{ dealership.endDateDealership | date:'mediumDate' }}</td>
+                    <td>{{ dealership.validDealership }}</td>
+                    <td>{{ dealership.descDealership }}</td>
+                    <td>
+                        <div *ngIf="dealership.docId">
+                            <a [routerLink]="['/doc', dealership.docId , 'view']" >{{ dealership.docId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="dealership.membershipId">
+                            <a [routerLink]="['/membership', dealership.membershipId , 'view']" >{{ dealership.membershipId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/dealership', dealership.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/dealership', dealership.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dealership)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="dealerships && dealerships.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

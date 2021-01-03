@@ -47,6 +47,27 @@ public class CacheConfiguration {
             createCache(cm, ma.basenautique.app.domain.User.class.getName());
             createCache(cm, ma.basenautique.app.domain.Authority.class.getName());
             createCache(cm, ma.basenautique.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, ma.basenautique.app.domain.Member.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Member.class.getName() + ".memberships");
+            createCache(cm, ma.basenautique.app.domain.Association.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Association.class.getName() + ".members");
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName() + ".guardings");
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName() + ".docs");
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName() + ".medicalCertificates");
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName() + ".dealerships");
+            createCache(cm, ma.basenautique.app.domain.Membership.class.getName() + ".vehicles");
+            createCache(cm, ma.basenautique.app.domain.Guarding.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Vehicle.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Vehicle.class.getName() + ".congePolices");
+            createCache(cm, ma.basenautique.app.domain.Vehicle.class.getName() + ".insurances");
+            createCache(cm, ma.basenautique.app.domain.CongePolice.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Insurance.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Dealership.class.getName());
+            createCache(cm, ma.basenautique.app.domain.MedicalCertificate.class.getName());
+            createCache(cm, ma.basenautique.app.domain.Doc.class.getName());
+            createCache(cm, ma.basenautique.app.domain.TypeDoc.class.getName());
+            createCache(cm, ma.basenautique.app.domain.ContentDoc.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

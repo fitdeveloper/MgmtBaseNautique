@@ -1,0 +1,50 @@
+{
+  "name": "Vehicle",
+  "fields": [
+    {
+      "fieldName": "numberVehicle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "titleVehicle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descVehicle",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "congePolice",
+      "otherEntityRelationshipName": "vehicle",
+      "relationshipName": "congePolice"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "insurance",
+      "otherEntityRelationshipName": "vehicle",
+      "relationshipName": "insurance"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "vehicle",
+      "relationshipName": "membership",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103090008",
+  "entityTableName": "vehicle",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

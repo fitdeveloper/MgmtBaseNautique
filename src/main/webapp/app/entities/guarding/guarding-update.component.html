@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-guarding-heading" jhiTranslate="mgmtBaseNautiqueApp.guarding.home.createOrEditLabel">Create or edit a Guarding</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.guarding.numberGuarding" for="field_numberGuarding">Number Guarding</label>
+                    <input type="text" class="form-control" name="numberGuarding" id="field_numberGuarding"
+                           formControlName="numberGuarding"/>
+                    <div *ngIf="editForm.get('numberGuarding')!.invalid && (editForm.get('numberGuarding')!.dirty || editForm.get('numberGuarding')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberGuarding')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.guarding.titleGuarding" for="field_titleGuarding">Title Guarding</label>
+                    <input type="text" class="form-control" name="titleGuarding" id="field_titleGuarding"
+                           formControlName="titleGuarding"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.guarding.descGuarding" for="field_descGuarding">Desc Guarding</label>
+                    <input type="text" class="form-control" name="descGuarding" id="field_descGuarding"
+                           formControlName="descGuarding"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.guarding.membership" for="field_membership">Membership</label>
+                    <select class="form-control" id="field_membership" name="membership" formControlName="membershipId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="membershipOption.id" *ngFor="let membershipOption of memberships; trackBy: trackById">{{ membershipOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

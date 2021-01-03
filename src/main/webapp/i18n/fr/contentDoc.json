@@ -1,0 +1,25 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "contentDoc": {
+      "home": {
+        "title": "ContentDocs",
+        "createLabel": "Créer un nouveau Content Doc",
+        "createOrEditLabel": "Créer ou éditer un Content Doc",
+        "search": "Recherche pour Content Doc",
+        "notFound": "Aucun Content Doc trouvé"
+      },
+      "created": "Un nouveau Content Doc a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Content Doc avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Content Doc avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Content Doc {{ id }} ?"
+      },
+      "detail": {
+        "title": "Content Doc"
+      },
+      "numberContentDoc": "Number Content Doc",
+      "dataContentDoc": "Data Content Doc",
+      "doc": "Doc"
+    }
+  }
+}

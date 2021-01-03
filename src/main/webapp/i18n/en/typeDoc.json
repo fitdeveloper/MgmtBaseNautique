@@ -1,0 +1,26 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "typeDoc": {
+      "home": {
+        "title": "Type Docs",
+        "createLabel": "Create a new Type Doc",
+        "createOrEditLabel": "Create or edit a Type Doc",
+        "search": "Search for Type Doc",
+        "notFound": "No Type Docs found"
+      },
+      "created": "A new Type Doc is created with identifier {{ param }}",
+      "updated": "A Type Doc is updated with identifier {{ param }}",
+      "deleted": "A Type Doc is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type Doc {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Doc"
+      },
+      "numberTypeDoc": "Number Type Doc",
+      "titleTypeDoc": "Title Type Doc",
+      "descTypeDoc": "Desc Type Doc",
+      "doc": "Doc"
+    }
+  }
+}

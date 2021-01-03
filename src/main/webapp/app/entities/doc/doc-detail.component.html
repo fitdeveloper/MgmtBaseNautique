@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="doc">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.doc.detail.title">Doc</span> {{ doc.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.numberDoc">Number Doc</span></dt>
+                <dd>
+                    <span>{{ doc.numberDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.titleDoc">Title Doc</span></dt>
+                <dd>
+                    <span>{{ doc.titleDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.sizeDoc">Size Doc</span></dt>
+                <dd>
+                    <span>{{ doc.sizeDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.mimeTypeDoc">Mime Type Doc</span></dt>
+                <dd>
+                    <span>{{ doc.mimeTypeDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.descDoc">Desc Doc</span></dt>
+                <dd>
+                    <span>{{ doc.descDoc }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.contentDoc">Content Doc</span></dt>
+                <dd>
+                    <div *ngIf="doc.contentDocId">
+                        <a [routerLink]="['/content-doc', doc.contentDocId, 'view']">{{ doc.contentDocId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.typeDoc">Type Doc</span></dt>
+                <dd>
+                    <div *ngIf="doc.typeDocId">
+                        <a [routerLink]="['/type-doc', doc.typeDocId, 'view']">{{ doc.typeDocId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.doc.membership">Membership</span></dt>
+                <dd>
+                    <div *ngIf="doc.membershipId">
+                        <a [routerLink]="['/membership', doc.membershipId, 'view']">{{ doc.membershipId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doc', doc.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

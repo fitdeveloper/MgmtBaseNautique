@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="member">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.member.detail.title">Member</span> {{ member.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.numberMember">Number Member</span></dt>
+                <dd>
+                    <span>{{ member.numberMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.typeMember">Type Member</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'mgmtBaseNautiqueApp.MemberType.' + member.typeMember }}">{{ member.typeMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.cinMember">Cin Member</span></dt>
+                <dd>
+                    <span>{{ member.cinMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.firstnameMember">Firstname Member</span></dt>
+                <dd>
+                    <span>{{ member.firstnameMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.lastnameMember">Lastname Member</span></dt>
+                <dd>
+                    <span>{{ member.lastnameMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.emailMember">Email Member</span></dt>
+                <dd>
+                    <span>{{ member.emailMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.numberPhoneMember">Number Phone Member</span></dt>
+                <dd>
+                    <span>{{ member.numberPhoneMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.dobMember">Dob Member</span></dt>
+                <dd>
+                    <span>{{ member.dobMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.adressMember">Adress Member</span></dt>
+                <dd>
+                    <span>{{ member.adressMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.imageMember">Image Member</span></dt>
+                <dd>
+                    <div *ngIf="member.imageMember">
+                        <a (click)="openFile(member.imageMemberContentType, member.imageMember)">
+                            <img [src]="'data:' + member.imageMemberContentType + ';base64,' + member.imageMember" style="max-width: 100%;" alt="member image"/>
+                        </a>
+                        {{ member.imageMemberContentType }}, {{ byteSize(member.imageMember) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.descMember">Desc Member</span></dt>
+                <dd>
+                    <span>{{ member.descMember }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="member.parentId">
+                        <a [routerLink]="['/member', member.parentId, 'view']">{{ member.parentId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.member.association">Association</span></dt>
+                <dd>
+                    <div *ngIf="member.associationId">
+                        <a [routerLink]="['/association', member.associationId, 'view']">{{ member.associationId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/member', member.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

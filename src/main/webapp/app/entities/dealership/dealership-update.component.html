@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dealership-heading" jhiTranslate="mgmtBaseNautiqueApp.dealership.home.createOrEditLabel">Create or edit a Dealership</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.numberDealership" for="field_numberDealership">Number Dealership</label>
+                    <input type="text" class="form-control" name="numberDealership" id="field_numberDealership"
+                           formControlName="numberDealership"/>
+                    <div *ngIf="editForm.get('numberDealership')!.invalid && (editForm.get('numberDealership')!.dirty || editForm.get('numberDealership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberDealership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.endDateDealership" for="field_endDateDealership">End Date Dealership</label>
+                    <div class="input-group">
+                        <input id="field_endDateDealership" type="text" class="form-control" name="endDateDealership" ngbDatepicker #endDateDealershipDp="ngbDatepicker" formControlName="endDateDealership"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDealershipDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('endDateDealership')!.invalid && (editForm.get('endDateDealership')!.dirty || editForm.get('endDateDealership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('endDateDealership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.validDealership" for="field_validDealership">Valid Dealership</label>
+                    <input type="checkbox" class="form-control" name="validDealership" id="field_validDealership"
+                           formControlName="validDealership"/>
+                    <div *ngIf="editForm.get('validDealership')!.invalid && (editForm.get('validDealership')!.dirty || editForm.get('validDealership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validDealership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.descDealership" for="field_descDealership">Desc Dealership</label>
+                    <input type="text" class="form-control" name="descDealership" id="field_descDealership"
+                           formControlName="descDealership"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.doc" for="field_doc">Doc</label>
+                    <select class="form-control" id="field_doc" name="doc" formControlName="docId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="docOption.id" *ngFor="let docOption of docs; trackBy: trackById">{{ docOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.dealership.membership" for="field_membership">Membership</label>
+                    <select class="form-control" id="field_membership" name="membership" formControlName="membershipId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="membershipOption.id" *ngFor="let membershipOption of memberships; trackBy: trackById">{{ membershipOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

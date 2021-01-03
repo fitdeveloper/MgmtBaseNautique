@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="membership">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.membership.detail.title">Membership</span> {{ membership.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.numberMembership">Number Membership</span></dt>
+                <dd>
+                    <span>{{ membership.numberMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.amountMembership">Amount Membership</span></dt>
+                <dd>
+                    <span>{{ membership.amountMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.startDateMembership">Start Date Membership</span></dt>
+                <dd>
+                    <span>{{ membership.startDateMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.endDateMembership">End Date Membership</span></dt>
+                <dd>
+                    <span>{{ membership.endDateMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.validMembership">Valid Membership</span></dt>
+                <dd>
+                    <span>{{ membership.validMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.descMembership">Desc Membership</span></dt>
+                <dd>
+                    <span>{{ membership.descMembership }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.membership.member">Member</span></dt>
+                <dd>
+                    <div *ngIf="membership.memberId">
+                        <a [routerLink]="['/member', membership.memberId, 'view']">{{ membership.memberId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/membership', membership.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

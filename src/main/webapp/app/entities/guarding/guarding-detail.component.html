@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="guarding">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.guarding.detail.title">Guarding</span> {{ guarding.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.guarding.numberGuarding">Number Guarding</span></dt>
+                <dd>
+                    <span>{{ guarding.numberGuarding }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.guarding.titleGuarding">Title Guarding</span></dt>
+                <dd>
+                    <span>{{ guarding.titleGuarding }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.guarding.descGuarding">Desc Guarding</span></dt>
+                <dd>
+                    <span>{{ guarding.descGuarding }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.guarding.membership">Membership</span></dt>
+                <dd>
+                    <div *ngIf="guarding.membershipId">
+                        <a [routerLink]="['/membership', guarding.membershipId, 'view']">{{ guarding.membershipId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/guarding', guarding.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

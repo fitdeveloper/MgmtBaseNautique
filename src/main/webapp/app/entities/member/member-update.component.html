@@ -1,0 +1,161 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-member-heading" jhiTranslate="mgmtBaseNautiqueApp.member.home.createOrEditLabel">Create or edit a Member</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.numberMember" for="field_numberMember">Number Member</label>
+                    <input type="text" class="form-control" name="numberMember" id="field_numberMember"
+                           formControlName="numberMember"/>
+                    <div *ngIf="editForm.get('numberMember')!.invalid && (editForm.get('numberMember')!.dirty || editForm.get('numberMember')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberMember')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.typeMember" for="field_typeMember">Type Member</label>
+                    <select class="form-control" name="typeMember" formControlName="typeMember" id="field_typeMember">
+                        <option value="MEMBER_INDIVIDUAL">{{ 'mgmtBaseNautiqueApp.MemberType.MEMBER_INDIVIDUAL' | translate }}</option>
+                        <option value="MEMBER_VEHICLEOWNER">{{ 'mgmtBaseNautiqueApp.MemberType.MEMBER_VEHICLEOWNER' | translate }}</option>
+                        <option value="MEMBER_GUEST">{{ 'mgmtBaseNautiqueApp.MemberType.MEMBER_GUEST' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('typeMember')!.invalid && (editForm.get('typeMember')!.dirty || editForm.get('typeMember')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeMember')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.cinMember" for="field_cinMember">Cin Member</label>
+                    <input type="text" class="form-control" name="cinMember" id="field_cinMember"
+                           formControlName="cinMember"/>
+                    <div *ngIf="editForm.get('cinMember')!.invalid && (editForm.get('cinMember')!.dirty || editForm.get('cinMember')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cinMember')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.firstnameMember" for="field_firstnameMember">Firstname Member</label>
+                    <input type="text" class="form-control" name="firstnameMember" id="field_firstnameMember"
+                           formControlName="firstnameMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.lastnameMember" for="field_lastnameMember">Lastname Member</label>
+                    <input type="text" class="form-control" name="lastnameMember" id="field_lastnameMember"
+                           formControlName="lastnameMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.emailMember" for="field_emailMember">Email Member</label>
+                    <input type="text" class="form-control" name="emailMember" id="field_emailMember"
+                           formControlName="emailMember"/>
+                    <div *ngIf="editForm.get('emailMember')!.invalid && (editForm.get('emailMember')!.dirty || editForm.get('emailMember')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('emailMember')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('emailMember')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email Member' }">
+                            This field should follow pattern for "Email Member".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.numberPhoneMember" for="field_numberPhoneMember">Number Phone Member</label>
+                    <input type="text" class="form-control" name="numberPhoneMember" id="field_numberPhoneMember"
+                           formControlName="numberPhoneMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.dobMember" for="field_dobMember">Dob Member</label>
+                    <div class="input-group">
+                        <input id="field_dobMember" type="text" class="form-control" name="dobMember" ngbDatepicker #dobMemberDp="ngbDatepicker" formControlName="dobMember"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dobMemberDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dobMember')!.invalid && (editForm.get('dobMember')!.dirty || editForm.get('dobMember')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dobMember')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.adressMember" for="field_adressMember">Adress Member</label>
+                    <input type="text" class="form-control" name="adressMember" id="field_adressMember"
+                           formControlName="adressMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.imageMember" for="field_imageMember">Image Member</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imageMemberContentType')!.value + ';base64,' + editForm.get('imageMember')!.value" style="max-height: 100px;" *ngIf="editForm.get('imageMember')!.value" alt="member image"/>
+                        <div *ngIf="editForm.get('imageMember')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imageMemberContentType')!.value }}, {{ byteSize(editForm.get('imageMember')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imageMember', 'imageMemberContentType', 'file_imageMember')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imageMember" (change)="setFileData($event, 'imageMember', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imageMember" id="field_imageMember"
+                           formControlName="imageMember"/>
+                    <input type="hidden" class="form-control" name="imageMemberContentType" id="field_imageMemberContentType"
+                           formControlName="imageMemberContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.descMember" for="field_descMember">Desc Member</label>
+                    <input type="text" class="form-control" name="descMember" id="field_descMember"
+                           formControlName="descMember"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" formControlName="parentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="memberOption.id" *ngFor="let memberOption of parents; trackBy: trackById">{{ memberOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.member.association" for="field_association">Association</label>
+                    <select class="form-control" id="field_association" name="association" formControlName="associationId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="associationOption.id" *ngFor="let associationOption of associations; trackBy: trackById">{{ associationOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

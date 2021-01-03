@@ -1,0 +1,52 @@
+{
+  "name": "CongePolice",
+  "fields": [
+    {
+      "fieldName": "numberCongePolice",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "endDateCongePolice",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "validCongePolice",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descCongePolice",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "congePolice",
+      "relationshipName": "doc",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicle",
+      "otherEntityRelationshipName": "congePolice",
+      "relationshipName": "vehicle",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103090108",
+  "entityTableName": "conge_police",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="congePolice">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.detail.title">Conge Police</span> {{ congePolice.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.numberCongePolice">Number Conge Police</span></dt>
+                <dd>
+                    <span>{{ congePolice.numberCongePolice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.endDateCongePolice">End Date Conge Police</span></dt>
+                <dd>
+                    <span>{{ congePolice.endDateCongePolice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.validCongePolice">Valid Conge Police</span></dt>
+                <dd>
+                    <span>{{ congePolice.validCongePolice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.descCongePolice">Desc Conge Police</span></dt>
+                <dd>
+                    <span>{{ congePolice.descCongePolice }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.doc">Doc</span></dt>
+                <dd>
+                    <div *ngIf="congePolice.docId">
+                        <a [routerLink]="['/doc', congePolice.docId, 'view']">{{ congePolice.docId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.vehicle">Vehicle</span></dt>
+                <dd>
+                    <div *ngIf="congePolice.vehicleId">
+                        <a [routerLink]="['/vehicle', congePolice.vehicleId, 'view']">{{ congePolice.vehicleId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/conge-police', congePolice.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

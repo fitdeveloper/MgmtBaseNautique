@@ -1,0 +1,36 @@
+{
+  "name": "ContentDoc",
+  "fields": [
+    {
+      "fieldName": "numberContentDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "dataContentDoc",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "contentDoc",
+      "relationshipName": "doc",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210103090708",
+  "entityTableName": "content_doc",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

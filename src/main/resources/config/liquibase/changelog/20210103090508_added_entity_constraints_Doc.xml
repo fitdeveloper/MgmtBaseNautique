@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Doc.
+    -->
+    <changeSet id="20210103090508-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="content_doc_id"
+                                 baseTableName="doc"
+                                 constraintName="fk_doc_content_doc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="content_doc"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_doc_id"
+                                 baseTableName="doc"
+                                 constraintName="fk_doc_type_doc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_doc"/>
+
+        <addForeignKeyConstraint baseColumnNames="membership_id"
+                                 baseTableName="doc"
+                                 constraintName="fk_doc_membership_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="membership"/>
+
+    </changeSet>
+</databaseChangeLog>
