@@ -1,0 +1,44 @@
+{
+  "name": "Association",
+  "fields": [
+    {
+      "fieldName": "numberAssociation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "nameAssociation",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "imageAssociation",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "descAssociation",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "association",
+      "relationshipValidateRules": "required",
+      "relationshipName": "member"
+    }
+  ],
+  "changelogDate": "20210103085708",
+  "entityTableName": "association",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

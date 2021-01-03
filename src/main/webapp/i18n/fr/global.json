@@ -7,6 +7,18 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "member": "Member",
+        "association": "Association",
+        "membership": "Membership",
+        "guarding": "Guarding",
+        "vehicle": "Vehicle",
+        "congePolice": "Conge Police",
+        "insurance": "Insurance",
+        "dealership": "Dealership",
+        "medicalCertificate": "Medical Certificate",
+        "doc": "Doc",
+        "typeDoc": "Type Doc",
+        "contentDoc": "Content Doc",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

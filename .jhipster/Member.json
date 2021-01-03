@@ -1,0 +1,98 @@
+{
+  "name": "Member",
+  "fields": [
+    {
+      "fieldName": "numberMember",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "typeMember",
+      "fieldType": "MemberType",
+      "fieldValues": "MEMBER_INDIVIDUAL (member_individual),MEMBER_VEHICLEOWNER (member_vehicleowner),MEMBER_GUEST (member_guest)",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cinMember",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "firstnameMember",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastnameMember",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailMember",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "pattern"],
+      "fieldValidateRulesPattern": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+    },
+    {
+      "fieldName": "numberPhoneMember",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dobMember",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adressMember",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageMember",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "descMember",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "child",
+      "relationshipName": "parent",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "member",
+      "relationshipName": "membership"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "parent",
+      "relationshipName": "child",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "association",
+      "otherEntityRelationshipName": "member",
+      "relationshipName": "association",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103085608",
+  "entityTableName": "member",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

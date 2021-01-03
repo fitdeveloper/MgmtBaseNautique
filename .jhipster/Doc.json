@@ -1,0 +1,94 @@
+{
+  "name": "Doc",
+  "fields": [
+    {
+      "fieldName": "numberDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "titleDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sizeDoc",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mimeTypeDoc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descDoc",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "contentDoc",
+      "otherEntityRelationshipName": "doc",
+      "relationshipValidateRules": "required",
+      "relationshipName": "contentDoc",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "typeDoc",
+      "otherEntityRelationshipName": "doc",
+      "relationshipValidateRules": "required",
+      "relationshipName": "typeDoc",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "insurance",
+      "otherEntityRelationshipName": "doc",
+      "relationshipName": "insurance",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "congePolice",
+      "otherEntityRelationshipName": "doc",
+      "relationshipName": "congePolice",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "medicalCertificate",
+      "otherEntityRelationshipName": "doc",
+      "relationshipName": "medicalCertificate",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "dealership",
+      "otherEntityRelationshipName": "doc",
+      "relationshipName": "dealership",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "doc",
+      "relationshipName": "membership",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103090508",
+  "entityTableName": "doc",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

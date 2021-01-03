@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medicalCertificate">
+            <h2><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.detail.title">Medical Certificate</span> {{ medicalCertificate.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.numberMedicalCertificate">Number Medical Certificate</span></dt>
+                <dd>
+                    <span>{{ medicalCertificate.numberMedicalCertificate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.endDateMedicalCertificate">End Date Medical Certificate</span></dt>
+                <dd>
+                    <span>{{ medicalCertificate.endDateMedicalCertificate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.validMedicalCertificate">Valid Medical Certificate</span></dt>
+                <dd>
+                    <span>{{ medicalCertificate.validMedicalCertificate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.descMedicalCertificate">Desc Medical Certificate</span></dt>
+                <dd>
+                    <span>{{ medicalCertificate.descMedicalCertificate }}</span>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.doc">Doc</span></dt>
+                <dd>
+                    <div *ngIf="medicalCertificate.docId">
+                        <a [routerLink]="['/doc', medicalCertificate.docId, 'view']">{{ medicalCertificate.docId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.membership">Membership</span></dt>
+                <dd>
+                    <div *ngIf="medicalCertificate.membershipId">
+                        <a [routerLink]="['/membership', medicalCertificate.membershipId, 'view']">{{ medicalCertificate.membershipId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medical-certificate', medicalCertificate.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

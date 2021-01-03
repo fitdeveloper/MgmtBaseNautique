@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-association-heading" jhiTranslate="mgmtBaseNautiqueApp.association.home.createOrEditLabel">Create or edit a Association</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.association.numberAssociation" for="field_numberAssociation">Number Association</label>
+                    <input type="text" class="form-control" name="numberAssociation" id="field_numberAssociation"
+                           formControlName="numberAssociation"/>
+                    <div *ngIf="editForm.get('numberAssociation')!.invalid && (editForm.get('numberAssociation')!.dirty || editForm.get('numberAssociation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberAssociation')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.association.nameAssociation" for="field_nameAssociation">Name Association</label>
+                    <input type="text" class="form-control" name="nameAssociation" id="field_nameAssociation"
+                           formControlName="nameAssociation"/>
+                    <div *ngIf="editForm.get('nameAssociation')!.invalid && (editForm.get('nameAssociation')!.dirty || editForm.get('nameAssociation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nameAssociation')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.association.imageAssociation" for="field_imageAssociation">Image Association</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imageAssociationContentType')!.value + ';base64,' + editForm.get('imageAssociation')!.value" style="max-height: 100px;" *ngIf="editForm.get('imageAssociation')!.value" alt="association image"/>
+                        <div *ngIf="editForm.get('imageAssociation')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imageAssociationContentType')!.value }}, {{ byteSize(editForm.get('imageAssociation')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imageAssociation', 'imageAssociationContentType', 'file_imageAssociation')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imageAssociation" (change)="setFileData($event, 'imageAssociation', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imageAssociation" id="field_imageAssociation"
+                           formControlName="imageAssociation"/>
+                    <input type="hidden" class="form-control" name="imageAssociationContentType" id="field_imageAssociationContentType"
+                           formControlName="imageAssociationContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.association.descAssociation" for="field_descAssociation">Desc Association</label>
+                    <input type="text" class="form-control" name="descAssociation" id="field_descAssociation"
+                           formControlName="descAssociation"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

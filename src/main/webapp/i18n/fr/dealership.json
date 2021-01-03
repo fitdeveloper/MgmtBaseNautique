@@ -1,0 +1,28 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "dealership": {
+      "home": {
+        "title": "Dealerships",
+        "createLabel": "Créer un nouveau Dealership",
+        "createOrEditLabel": "Créer ou éditer un Dealership",
+        "search": "Recherche pour Dealership",
+        "notFound": "Aucun Dealership trouvé"
+      },
+      "created": "Un nouveau Dealership a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dealership avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dealership avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Dealership {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dealership"
+      },
+      "numberDealership": "Number Dealership",
+      "endDateDealership": "End Date Dealership",
+      "validDealership": "Valid Dealership",
+      "descDealership": "Desc Dealership",
+      "doc": "Doc",
+      "membership": "Membership"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "guarding": {
+      "home": {
+        "title": "Guardings",
+        "createLabel": "Create a new Guarding",
+        "createOrEditLabel": "Create or edit a Guarding",
+        "search": "Search for Guarding",
+        "notFound": "No Guardings found"
+      },
+      "created": "A new Guarding is created with identifier {{ param }}",
+      "updated": "A Guarding is updated with identifier {{ param }}",
+      "deleted": "A Guarding is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Guarding {{ id }}?"
+      },
+      "detail": {
+        "title": "Guarding"
+      },
+      "numberGuarding": "Number Guarding",
+      "titleGuarding": "Title Guarding",
+      "descGuarding": "Desc Guarding",
+      "membership": "Membership"
+    }
+  }
+}

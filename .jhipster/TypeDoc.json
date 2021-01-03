@@ -1,0 +1,39 @@
+{
+  "name": "TypeDoc",
+  "fields": [
+    {
+      "fieldName": "numberTypeDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "titleTypeDoc",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descTypeDoc",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "typeDoc",
+      "relationshipName": "doc",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210103090608",
+  "entityTableName": "type_doc",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

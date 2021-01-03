@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-membership-heading" jhiTranslate="mgmtBaseNautiqueApp.membership.home.createOrEditLabel">Create or edit a Membership</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.numberMembership" for="field_numberMembership">Number Membership</label>
+                    <input type="text" class="form-control" name="numberMembership" id="field_numberMembership"
+                           formControlName="numberMembership"/>
+                    <div *ngIf="editForm.get('numberMembership')!.invalid && (editForm.get('numberMembership')!.dirty || editForm.get('numberMembership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberMembership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.amountMembership" for="field_amountMembership">Amount Membership</label>
+                    <input type="number" class="form-control" name="amountMembership" id="field_amountMembership"
+                           formControlName="amountMembership"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.startDateMembership" for="field_startDateMembership">Start Date Membership</label>
+                    <div class="input-group">
+                        <input id="field_startDateMembership" type="text" class="form-control" name="startDateMembership" ngbDatepicker #startDateMembershipDp="ngbDatepicker" formControlName="startDateMembership"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateMembershipDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('startDateMembership')!.invalid && (editForm.get('startDateMembership')!.dirty || editForm.get('startDateMembership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('startDateMembership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.endDateMembership" for="field_endDateMembership">End Date Membership</label>
+                    <div class="input-group">
+                        <input id="field_endDateMembership" type="text" class="form-control" name="endDateMembership" ngbDatepicker #endDateMembershipDp="ngbDatepicker" formControlName="endDateMembership"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateMembershipDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('endDateMembership')!.invalid && (editForm.get('endDateMembership')!.dirty || editForm.get('endDateMembership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('endDateMembership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.validMembership" for="field_validMembership">Valid Membership</label>
+                    <input type="checkbox" class="form-control" name="validMembership" id="field_validMembership"
+                           formControlName="validMembership"/>
+                    <div *ngIf="editForm.get('validMembership')!.invalid && (editForm.get('validMembership')!.dirty || editForm.get('validMembership')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validMembership')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.descMembership" for="field_descMembership">Desc Membership</label>
+                    <input type="text" class="form-control" name="descMembership" id="field_descMembership"
+                           formControlName="descMembership"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.membership.member" for="field_member">Member</label>
+                    <select class="form-control" id="field_member" name="member" formControlName="memberId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="memberOption.id" *ngFor="let memberOption of members; trackBy: trackById">{{ memberOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

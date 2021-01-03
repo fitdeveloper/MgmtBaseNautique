@@ -1,0 +1,126 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mgmtBaseNautiqueApp.member.home.title">Members</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-member" [routerLink]="['/member/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="mgmtBaseNautiqueApp.member.home.createLabel">
+            Create a new Member
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'mgmtBaseNautiqueApp.member.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="members?.length === 0">
+        <span jhiTranslate="mgmtBaseNautiqueApp.member.home.notFound">No members found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="members && members.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.numberMember">Number Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="typeMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.typeMember">Type Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cinMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.cinMember">Cin Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="firstnameMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.firstnameMember">Firstname Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastnameMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.lastnameMember">Lastname Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="emailMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.emailMember">Email Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberPhoneMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.numberPhoneMember">Number Phone Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dobMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.dobMember">Dob Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="adressMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.adressMember">Adress Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="imageMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.imageMember">Image Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="descMember"><span jhiTranslate="mgmtBaseNautiqueApp.member.descMember">Desc Member</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="parentId"><span jhiTranslate="mgmtBaseNautiqueApp.member.parent">Parent</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="associationId"><span jhiTranslate="mgmtBaseNautiqueApp.member.association">Association</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of members ;trackBy: trackId">
+                    <td><a [routerLink]="['/member', member.id, 'view']">{{ member.id }}</a></td>
+                    <td>{{ member.numberMember }}</td>
+                    <td jhiTranslate="{{ 'mgmtBaseNautiqueApp.MemberType.' + member.typeMember }}">{{ member.typeMember }}</td>
+                    <td>{{ member.cinMember }}</td>
+                    <td>{{ member.firstnameMember }}</td>
+                    <td>{{ member.lastnameMember }}</td>
+                    <td>{{ member.emailMember }}</td>
+                    <td>{{ member.numberPhoneMember }}</td>
+                    <td>{{ member.dobMember | date:'mediumDate' }}</td>
+                    <td>{{ member.adressMember }}</td>
+                    <td>
+                        <a *ngIf="member.imageMember" (click)="openFile(member.imageMemberContentType, member.imageMember)">
+                            <img [src]="'data:' + member.imageMemberContentType + ';base64,' + member.imageMember" style="max-height: 30px;" alt="member image"/>
+                        </a>
+                        <span *ngIf="member.imageMember">{{ member.imageMemberContentType }}, {{ byteSize(member.imageMember) }}</span>
+                    </td>
+                    <td>{{ member.descMember }}</td>
+                    <td>
+                        <div *ngIf="member.parentId">
+                            <a [routerLink]="['/member', member.parentId , 'view']" >{{ member.parentId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="member.associationId">
+                            <a [routerLink]="['/association', member.associationId , 'view']" >{{ member.associationId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/member', member.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/member', member.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(member)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="members && members.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

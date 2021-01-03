@@ -1,0 +1,107 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mgmtBaseNautiqueApp.congePolice.home.title">Conge Polices</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-conge-police" [routerLink]="['/conge-police/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="mgmtBaseNautiqueApp.congePolice.home.createLabel">
+            Create a new Conge Police
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'mgmtBaseNautiqueApp.congePolice.home.search' | translate }}">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="congePolices?.length === 0">
+        <span jhiTranslate="mgmtBaseNautiqueApp.congePolice.home.notFound">No congePolices found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="congePolices && congePolices.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numberCongePolice"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.numberCongePolice">Number Conge Police</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endDateCongePolice"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.endDateCongePolice">End Date Conge Police</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="validCongePolice"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.validCongePolice">Valid Conge Police</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="descCongePolice"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.descCongePolice">Desc Conge Police</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="docId"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.doc">Doc</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="vehicleId"><span jhiTranslate="mgmtBaseNautiqueApp.congePolice.vehicle">Vehicle</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let congePolice of congePolices ;trackBy: trackId">
+                    <td><a [routerLink]="['/conge-police', congePolice.id, 'view']">{{ congePolice.id }}</a></td>
+                    <td>{{ congePolice.numberCongePolice }}</td>
+                    <td>{{ congePolice.endDateCongePolice | date:'mediumDate' }}</td>
+                    <td>{{ congePolice.validCongePolice }}</td>
+                    <td>{{ congePolice.descCongePolice }}</td>
+                    <td>
+                        <div *ngIf="congePolice.docId">
+                            <a [routerLink]="['/doc', congePolice.docId , 'view']" >{{ congePolice.docId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="congePolice.vehicleId">
+                            <a [routerLink]="['/vehicle', congePolice.vehicleId , 'view']" >{{ congePolice.vehicleId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/conge-police', congePolice.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/conge-police', congePolice.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(congePolice)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="congePolices && congePolices.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

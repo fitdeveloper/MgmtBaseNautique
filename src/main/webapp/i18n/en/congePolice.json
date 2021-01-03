@@ -1,0 +1,28 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "congePolice": {
+      "home": {
+        "title": "Conge Polices",
+        "createLabel": "Create a new Conge Police",
+        "createOrEditLabel": "Create or edit a Conge Police",
+        "search": "Search for Conge Police",
+        "notFound": "No Conge Polices found"
+      },
+      "created": "A new Conge Police is created with identifier {{ param }}",
+      "updated": "A Conge Police is updated with identifier {{ param }}",
+      "deleted": "A Conge Police is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Conge Police {{ id }}?"
+      },
+      "detail": {
+        "title": "Conge Police"
+      },
+      "numberCongePolice": "Number Conge Police",
+      "endDateCongePolice": "End Date Conge Police",
+      "validCongePolice": "Valid Conge Police",
+      "descCongePolice": "Desc Conge Police",
+      "doc": "Doc",
+      "vehicle": "Vehicle"
+    }
+  }
+}

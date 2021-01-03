@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-insurance-heading" jhiTranslate="mgmtBaseNautiqueApp.insurance.home.createOrEditLabel">Create or edit a Insurance</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.numberInsurance" for="field_numberInsurance">Number Insurance</label>
+                    <input type="text" class="form-control" name="numberInsurance" id="field_numberInsurance"
+                           formControlName="numberInsurance"/>
+                    <div *ngIf="editForm.get('numberInsurance')!.invalid && (editForm.get('numberInsurance')!.dirty || editForm.get('numberInsurance')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numberInsurance')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.endDateInsurance" for="field_endDateInsurance">End Date Insurance</label>
+                    <div class="input-group">
+                        <input id="field_endDateInsurance" type="text" class="form-control" name="endDateInsurance" ngbDatepicker #endDateInsuranceDp="ngbDatepicker" formControlName="endDateInsurance"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateInsuranceDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('endDateInsurance')!.invalid && (editForm.get('endDateInsurance')!.dirty || editForm.get('endDateInsurance')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('endDateInsurance')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.validInsurance" for="field_validInsurance">Valid Insurance</label>
+                    <input type="checkbox" class="form-control" name="validInsurance" id="field_validInsurance"
+                           formControlName="validInsurance"/>
+                    <div *ngIf="editForm.get('validInsurance')!.invalid && (editForm.get('validInsurance')!.dirty || editForm.get('validInsurance')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validInsurance')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.descInsurance" for="field_descInsurance">Desc Insurance</label>
+                    <input type="text" class="form-control" name="descInsurance" id="field_descInsurance"
+                           formControlName="descInsurance"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.doc" for="field_doc">Doc</label>
+                    <select class="form-control" id="field_doc" name="doc" formControlName="docId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="docOption.id" *ngFor="let docOption of docs; trackBy: trackById">{{ docOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.insurance.vehicle" for="field_vehicle">Vehicle</label>
+                    <select class="form-control" id="field_vehicle" name="vehicle" formControlName="vehicleId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vehicleOption.id" *ngFor="let vehicleOption of vehicles; trackBy: trackById">{{ vehicleOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+{
+  "name": "MedicalCertificate",
+  "fields": [
+    {
+      "fieldName": "numberMedicalCertificate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "endDateMedicalCertificate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "validMedicalCertificate",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descMedicalCertificate",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "doc",
+      "otherEntityRelationshipName": "medicalCertificate",
+      "relationshipName": "doc",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "membership",
+      "otherEntityRelationshipName": "medicalCertificate",
+      "relationshipName": "membership",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210103090408",
+  "entityTableName": "medical_certificate",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

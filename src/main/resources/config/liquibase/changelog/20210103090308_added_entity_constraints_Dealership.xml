@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Dealership.
+    -->
+    <changeSet id="20210103090308-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="doc_id"
+                                 baseTableName="dealership"
+                                 constraintName="fk_dealership_doc_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="doc"/>
+
+        <addForeignKeyConstraint baseColumnNames="membership_id"
+                                 baseTableName="dealership"
+                                 constraintName="fk_dealership_membership_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="membership"/>
+
+    </changeSet>
+</databaseChangeLog>

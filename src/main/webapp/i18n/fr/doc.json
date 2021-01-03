@@ -1,0 +1,34 @@
+{
+  "mgmtBaseNautiqueApp": {
+    "doc": {
+      "home": {
+        "title": "Docs",
+        "createLabel": "Créer un nouveau Doc",
+        "createOrEditLabel": "Créer ou éditer un Doc",
+        "search": "Recherche pour Doc",
+        "notFound": "Aucun Doc trouvé"
+      },
+      "created": "Un nouveau Doc a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Doc avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Doc avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Doc {{ id }} ?"
+      },
+      "detail": {
+        "title": "Doc"
+      },
+      "numberDoc": "Number Doc",
+      "titleDoc": "Title Doc",
+      "sizeDoc": "Size Doc",
+      "mimeTypeDoc": "Mime Type Doc",
+      "descDoc": "Desc Doc",
+      "contentDoc": "Content Doc",
+      "typeDoc": "Type Doc",
+      "insurance": "Insurance",
+      "congePolice": "Conge Police",
+      "medicalCertificate": "Medical Certificate",
+      "dealership": "Dealership",
+      "membership": "Membership"
+    }
+  }
+}
