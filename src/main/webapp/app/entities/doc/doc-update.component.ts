@@ -51,7 +51,12 @@ export class DocUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ doc }) => {
       this.updateForm(doc);
-
+      if (JSON.stringify(doc) === '{}') {
+        const generateUniqueNumber = 'CP_' + Date.now();
+        this.editForm.patchValue({
+          numberDoc: generateUniqueNumber,
+        });
+      }
       this.contentDocService
         .query({ filter: 'doc-is-null' })
         .pipe(

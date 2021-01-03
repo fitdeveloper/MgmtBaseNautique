@@ -36,7 +36,12 @@ export class GuardingUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ guarding }) => {
       this.updateForm(guarding);
-
+      if (JSON.stringify(guarding) === '{}') {
+        const generateUniqueNumber = 'CP_' + Date.now();
+        this.editForm.patchValue({
+          numberGuarding: generateUniqueNumber,
+        });
+      }
       this.membershipService.query().subscribe((res: HttpResponse<IMembership[]>) => (this.memberships = res.body || []));
     });
   }

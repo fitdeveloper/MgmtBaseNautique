@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.association.numberAssociation" for="field_numberAssociation">Number Association</label>
                     <input type="text" class="form-control" name="numberAssociation" id="field_numberAssociation"
-                           formControlName="numberAssociation"/>
+                           formControlName="numberAssociation" readonly/>
                     <div *ngIf="editForm.get('numberAssociation')!.invalid && (editForm.get('numberAssociation')!.dirty || editForm.get('numberAssociation')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('numberAssociation')?.errors?.required" jhiTranslate="entity.validation.required">

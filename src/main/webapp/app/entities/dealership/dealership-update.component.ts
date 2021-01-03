@@ -46,7 +46,12 @@ export class DealershipUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ dealership }) => {
       this.updateForm(dealership);
-
+      if (JSON.stringify(dealership) === '{}') {
+        const generateUniqueNumber = 'CP_' + Date.now();
+        this.editForm.patchValue({
+          numberDealership: generateUniqueNumber,
+        });
+      }
       this.docService
         .query({ filter: 'dealership-is-null' })
         .pipe(

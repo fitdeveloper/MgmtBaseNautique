@@ -46,7 +46,12 @@ export class InsuranceUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ insurance }) => {
       this.updateForm(insurance);
-
+      if (JSON.stringify(insurance) === '{}') {
+        const generateUniqueNumber = 'CP_' + Date.now();
+        this.editForm.patchValue({
+          numberInsurance: generateUniqueNumber,
+        });
+      }
       this.docService
         .query({ filter: 'insurance-is-null' })
         .pipe(

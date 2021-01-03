@@ -38,6 +38,12 @@ export class AssociationUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ association }) => {
       this.updateForm(association);
+      if (JSON.stringify(association) === '{}') {
+        const generateUniqueNumber = 'A_' + Date.now();
+        this.editForm.patchValue({
+          numberAssociation: generateUniqueNumber,
+        });
+      }
     });
   }
 

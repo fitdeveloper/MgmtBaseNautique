@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.medicalCertificate.numberMedicalCertificate" for="field_numberMedicalCertificate">Number Medical Certificate</label>
                     <input type="text" class="form-control" name="numberMedicalCertificate" id="field_numberMedicalCertificate"
-                           formControlName="numberMedicalCertificate"/>
+                           formControlName="numberMedicalCertificate" readonly/>
                     <div *ngIf="editForm.get('numberMedicalCertificate')!.invalid && (editForm.get('numberMedicalCertificate')!.dirty || editForm.get('numberMedicalCertificate')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('numberMedicalCertificate')?.errors?.required" jhiTranslate="entity.validation.required">

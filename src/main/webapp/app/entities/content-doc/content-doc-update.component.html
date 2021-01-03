@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="mgmtBaseNautiqueApp.contentDoc.numberContentDoc" for="field_numberContentDoc">Number Content Doc</label>
                     <input type="text" class="form-control" name="numberContentDoc" id="field_numberContentDoc"
-                           formControlName="numberContentDoc"/>
+                           formControlName="numberContentDoc" readonly/>
                     <div *ngIf="editForm.get('numberContentDoc')!.invalid && (editForm.get('numberContentDoc')!.dirty || editForm.get('numberContentDoc')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('numberContentDoc')?.errors?.required" jhiTranslate="entity.validation.required">
